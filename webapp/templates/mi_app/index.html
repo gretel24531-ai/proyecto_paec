@@ -1,0 +1,459 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interfaz Bonita</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            background: #1a1a1a;
+            color: white;
+        }
+
+        /* ICONO DE TEMA */
+        .theme-icon {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            font-size: 2rem;
+            z-index: 2000;
+        }
+
+        /* NAVBAR */
+        .navbar {
+            width: 100%;
+            padding: 1.5rem 3rem;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5rem;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2.5rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .link {
+            position: relative;
+            text-decoration: none;
+            color: #fff;
+            font-size: 1.1rem;
+            padding-bottom: 8px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .link:hover {
+            color: #ffd369;
+        }
+
+        .link::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            height: 2px;
+            background-color: #ffd369;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .link:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* PÁGINAS */
+        .page {
+            display: none;
+            padding-top: 150px !important;
+            text-align: center;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        .page h1 {
+            font-size: 2.5rem;
+        }
+
+        .page p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        /* =====================================================
+        CRONOGRAMA — LAS IMÁGENES MÁS GRANDES AÚN
+        ===================================================== */
+
+        .cronograma-carousel-container {
+            position: relative;
+            width: 100%;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cronograma-carousel {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding: 10px;
+        }
+
+        .cronograma-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* 🔥 Ahora las imágenes ocupan un 95% del ancho y casi toda la altura */
+        .cronograma-card {
+            width: calc(100vw - 30px);  /* bordes laterales más pequeños */
+            height: calc(100vh - 170px); /* casi toda la pantalla */
+            scroll-snap-align: center;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+
+            gap: 15px;
+            background: transparent;
+        }
+
+        .cronograma-card h3 {
+            font-size: 2.2rem;
+            margin-bottom: 0;
+        }
+
+        .cronograma-card p {
+            font-size: 1.3rem;
+            margin-top: 0;
+        }
+
+        /* IMAGEN GIGANTE */
+        .cronograma-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 15px;
+            background: black;
+        }
+
+        /* FLECHAS */
+        .cronograma-arrow {
+            text-decoration: none;
+            color: #ffd369;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            font-size: 2.2rem;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+        }
+
+        .cronograma-arrow:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .cronograma-arrow.left { margin-right: 10px; }
+        .cronograma-arrow.right { margin-left: 10px; }
+
+        /* =============================== */
+        /*          GALERÍA               */
+        /* =============================== */
+
+        .semana {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 90%;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+        }
+
+        .arrow {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffd369;
+            font-size: 2rem;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .arrow:hover {
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .carousel {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            padding: 20px;
+        }
+
+        .carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .card {
+            min-width: 250px;
+            max-width: 250px;
+            height: 200px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            scroll-snap-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* TEMA CLARO */
+        body[data-theme="light"] {
+            background: #fff;
+            color: black;
+        }
+
+        body[data-theme="dark"] {
+            background: #1a1a1a;
+            color: white;
+        }
+
+        body[data-theme="light"],
+        body[data-theme="light"] * {
+            color: black !important;
+        }
+
+        /* IMAGEN DE INICIO (no tocada) */
+        /* SOLO PARA LA IMAGEN DEL INICIO */
+        .inicio-img-container img {
+            width: 100%;                /* ancho completo */
+            height: calc(100vh - 80px); /* altura total de la pantalla menos la navbar */
+            object-fit: cover;          /* mantiene proporción y recorta lo necesario */
+            object-position: center;    /* centra la imagen */
+            display: block;             /* evita espacios extra debajo */
+        }
+
+        /* Solo para el inicio */
+        .inicio-section {
+            padding-top: 0; /* elimina el espacio extra solo en Inicio */
+        }
+    </style>
+
+</head>
+
+<body>
+
+<!-- ICONO MODO CLARO/OSCURO -->
+<div class="theme-icon"></div>
+
+<nav class="navbar">
+    <div class="logo">MiProyecto</div>
+    <ul class="nav-links">
+        <li><a class="link" onclick="showPage('inicio')">Inicio</a></li>
+        <li><a class="link" onclick="showPage('objetivos')">Objetivos</a></li>
+        <li><a class="link" onclick="showPage('cronograma')">Cronograma</a></li>
+        <li><a class="link" onclick="showPage('galeria')">Galería</a></li>
+        <li><a class="link" onclick="showPage('evaluacion')">Evaluación y Reflexiones</a></li>
+    </ul>
+</nav>
+<section id="inicio" class="page inicio-section active">
+
+    <!-- IMAGEN DE FONDO -->
+    <div class="inicio-img-container">
+        <img src="template_paec.png" alt="Imagen de inicio">
+    </div>
+
+    <!-- CONTENIDO SOBRE LA IMAGEN -->
+    <div class="inicio-content">
+        <div class="inicio-descripcion">
+            <h2>¿De qué trata este proyecto?</h2>
+            <p>
+                Aquí puedes escribir una descripción clara del proyecto, su propósito,
+                objetivos principales y lo que esperas lograr con él.
+            </p>
+        </div>
+
+        <div class="inicio-logo">
+            <a href="https://instagram.com/TU_CUENTA" target="_blank">
+                <img src="img/logo.png" alt="Logo Instagram">
+            </a>
+        </div>
+    </div>
+
+</section>
+
+<section id="objetivos" class="page">
+    <h1>Objetivos</h1>
+    <p>Aquí puedes describir los objetivos del proyecto.</p>
+</section>
+
+<!-- CRONOGRAMA CON CARRUSEL SIN JS -->
+<section id="cronograma" class="page">
+    <h1>Cronograma</h1>
+    <p>A continuación podras ver un poco de nuetras actividades, que hicimos de inicio a fin del proyecto:</p>
+
+    <div class="cronograma-carousel-container">
+        <a class="cronograma-arrow left" href="#c1">&#10094;</a>
+
+        <div class="cronograma-carousel">
+
+            <!-- SEMANA 1 -->
+            <div class="cronograma-card" id="c1">
+                <h3>ROLES</h3>
+                <p>Rol empleado por cada integrante del equipo</p>
+                <img src="E1.png">
+            </div>
+
+        <div class="cronograma-card" id="c2">
+    <h3>ACTIVIDADES</h3>
+    <p>En que tiempos se realizaron las actividades</p>
+    <img src="E2.png">
+</div>
+
+
+        </div>
+
+        <a class="cronograma-arrow right" href="#c2">&#10095;</a>
+    </div>
+</section>
+
+<section id="galeria" class="page">
+    <h1>Galería</h1>
+
+    <!-- SEMANA 1 -->
+    <div class="semana">
+        <h2>Semana 1</h2>
+        <div class="carousel-container">
+            <a class="arrow left" href="#sem1-1">&#10094;</a>
+            <div class="carousel">
+                <div class="card" id="sem1-1"><img src="S14.png" alt=""></div>
+                <div class="card" id="sem1-2"><img src="S15.png" alt=""></div>
+                <div class="card" id="sem1-3"><img src="S16.png" alt=""></div>
+                <div class="card" id="sem1-4"><img src="S1.png" alt=""></div>
+                <div class="card" id="sem1-5"><img src="S12.png" alt=""></div>
+                <div class="card" id="sem1-6"><img src="S13.png" alt=""></div>
+            </div>
+            <a class="arrow right" href="#sem1-6">&#10095;</a>
+        </div>
+    </div>
+
+    <!-- SEMANA 2 -->
+    <div class="semana">
+        <h2>Semana 2</h2>
+        <div class="carousel-container">
+            <a class="arrow left" href="#sem2-1">&#10094;</a>
+            <div class="carousel">
+                <div class="card" id="sem2-1"><img src="S2.png" alt=""></div>
+                <div class="card" id="sem2-2"><img src="S22.png" alt=""></div>
+                <div class="card" id="sem2-3"><img src="S23.png" alt=""></div>
+                <div class="card" id="sem2-4"><img src="S24.png" alt=""></div>
+                <div class="card" id="sem2-5"><img src="S25.png" alt=""></div>
+                <div class="card" id="sem2-6"><img src="S26.png" alt=""></div>
+            </div>
+            <a class="arrow right" href="#sem2-6">&#10095;</a>
+        </div>
+    </div>
+
+    <!-- SEMANA 3 -->
+    <div class="semana">
+        <h2>Semana 3</h2>
+        <div class="carousel-container">
+            <a class="arrow left" href="#sem3-1">&#10094;</a>
+            <div class="carousel">
+                <div class="card" id="sem3-1"><img src="" alt=""></div>
+                <div class="card" id="sem3-2"><img src="" alt=""></div>
+                <div class="card" id="sem3-3"><img src="" alt=""></div>
+                <div class="card" id="sem3-4"><img src="" alt=""></div>
+                <div class="card" id="sem3-5"><img src="" alt=""></div>
+                <div class="card" id="sem3-6"><img src="" alt=""></div>
+            </div>
+            <a class="arrow right" href="#sem3-6">&#10095;</a>
+        </div>
+    </div>
+
+    <!-- SEMANA 4 -->
+    <div class="semana">
+        <h2>Semana 4</h2>
+        <div class="carousel-container">
+            <a class="arrow left" href="#sem4-1">&#10094;</a>
+            <div class="carousel">
+                <div class="card" id="sem4-1"><img src="S4(1).png" alt=""></div>
+                <div class="card" id="sem4-2"><img src="" alt=""></div>
+                <div class="card" id="sem4-3"><img src="" alt=""></div>
+                <div class="card" id="sem4-4"><img src="" alt=""></div>
+                <div class="card" id="sem4-5"><img src="" alt=""></div>
+                <div class="card" id="sem4-6"><img src="" alt=""></div>
+            </div>
+            <a class="arrow right" href="#sem4-6">&#10095;</a>
+        </div>
+    </div>
+
+</section>
+
+<section id="evaluacion" class="page">
+    <h1>Evaluación y Reflexiones</h1>
+    <p>Conclusiones, aprendizajes y evaluación del proyecto.</p>
+</section>
+
+<script>
+function showPage(pageId) {
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    document.getElementById(pageId).classList.add("active");
+}
+</script>
+
+<script>
+// Detectar elementos
+const themeIcon = document.querySelector(".theme-icon");
+
+// Cargar tema guardado
+let theme = localStorage.getItem("theme") || "dark";
+
+// Aplicar tema inicial
+document.body.setAttribute("data-theme", theme);
+themeIcon.textContent = theme === "light" ? "☀️" : "🌙";
+
+// Alternar tema al hacer clic
+themeIcon.addEventListener("click", () => {
+    theme = theme === "light" ? "dark" : "light";
+
+    document.body.setAttribute("data-theme", theme);
+    themeIcon.textContent = theme === "light" ? "☀️" : "🌙";
+
+    localStorage.setItem("theme", theme);
+});
+</script>
+
+</body>
+</html>
