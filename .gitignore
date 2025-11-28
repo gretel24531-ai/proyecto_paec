@@ -16,7 +16,7 @@ __pycache__/
 # La base de datos local (db.sqlite3) y archivos de sesión no se suben.
 db.sqlite3
 *.sqlite3-journal
-.env
+.venv
 
 # ----------------------------------------------------
 # 4. ARCHIVOS ESTÁTICOS DE PRODUCCIÓN
