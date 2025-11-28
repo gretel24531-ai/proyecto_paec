@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-t@@^p%&4c(5o*gavg5h7l7qnrb-2s#2p)^f8=cuagtw7t_$%kw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['dari21.pythonanywhere.com', '127.0.0.1']
+ALLOWED_HOSTS = ['dari21.pythonanywhere.com', '127.0.0.1', 'https://proyecto-paec.onrender.com/']
 
 
 # Application definition
