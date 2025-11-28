@@ -1,0 +1,30 @@
+# .gitignore
+
+# ----------------------------------------------------
+# 1. ENTORNO VIRTUAL
+# La carpeta venv/ no debe subirse. Render usará requirements.txt para recrearlo.
+venv/
+
+# ----------------------------------------------------
+# 2. ARCHIVOS DE PYTHON Y CACHÉ
+# Ignora archivos compilados y carpetas de caché
+__pycache__/
+*.pyc
+
+# ----------------------------------------------------
+# 3. BASE DE DATOS Y SENSIBILIDAD
+# La base de datos local (db.sqlite3) y archivos de sesión no se suben.
+db.sqlite3
+*.sqlite3-journal
+.env
+
+# ----------------------------------------------------
+# 4. ARCHIVOS ESTÁTICOS DE PRODUCCIÓN
+# Esta es la carpeta que Django crea cuando ejecutas 'collectstatic'
+staticfiles/
+
+# ----------------------------------------------------
+# 5. ARCHIVOS ESPECÍFICOS DEL SISTEMA OPERATIVO
+# Archivos basura generados por sistemas operativos (Mac y Windows)
+.DS_Store
+Thumbs.db
