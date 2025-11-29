@@ -3,8 +3,11 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interfaz Bonita</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Rosita Fresita</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image" href="{% static 'img/paec2.png' %}">
+
     <style>
         body {
             margin: 0;
@@ -97,10 +100,7 @@
             opacity: 0.8;
         }
 
-        /* =====================================================
-        CRONOGRAMA — LAS IMÁGENES MÁS GRANDES AÚN
-        ===================================================== */
-
+        /* ===================================================== CRONOGRAMA ===================================================== */
         .cronograma-carousel-container {
             position: relative;
             width: 100%;
@@ -123,17 +123,14 @@
             display: none;
         }
 
-        /* 🔥 Ahora las imágenes ocupan un 95% del ancho y casi toda la altura */
         .cronograma-card {
-            width: calc(100vw - 30px);  /* bordes laterales más pequeños */
-            height: calc(100vh - 170px); /* casi toda la pantalla */
+            width: calc(100vw - 30px);
+            height: calc(100vh - 170px);
             scroll-snap-align: center;
-
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-
             gap: 15px;
             background: transparent;
         }
@@ -148,7 +145,6 @@
             margin-top: 0;
         }
 
-        /* IMAGEN GIGANTE */
         .cronograma-card img {
             width: 100%;
             height: 100%;
@@ -173,13 +169,15 @@
             background: rgba(255, 255, 255, 0.3);
         }
 
-        .cronograma-arrow.left { margin-right: 10px; }
-        .cronograma-arrow.right { margin-left: 10px; }
+        .cronograma-arrow.left {
+            margin-right: 10px;
+        }
 
-        /* =============================== */
-        /*          GALERÍA               */
-        /* =============================== */
+        .cronograma-arrow.right {
+            margin-left: 10px;
+        }
 
+        /* =============================== GALERÍA =============================== */
         .semana {
             margin-top: 40px;
             text-align: center;
@@ -254,22 +252,246 @@
             color: black !important;
         }
 
-        /* IMAGEN DE INICIO (no tocada) */
-        /* SOLO PARA LA IMAGEN DEL INICIO */
+        /* IMAGEN DE INICIO */
         .inicio-img-container img {
-            width: 100%;                /* ancho completo */
-            height: calc(100vh - 80px); /* altura total de la pantalla menos la navbar */
-            object-fit: cover;          /* mantiene proporción y recorta lo necesario */
-            object-position: center;    /* centra la imagen */
-            display: block;             /* evita espacios extra debajo */
+            width: 100%;
+            height: calc(100vh - 80px);
+            object-fit: cover;
+            object-position: center;
+            display: block;
+
+            /* ⭐ NUEVO: BORDES SIN CAMBIAR TAMAÑO ⭐ */
+            border-radius: 50px;           /* Bordes redondeados bonitos */
+            border: 4px solid #ffffff55;   /* Borde suave translúcido */
+        }
+        .inicio-img-container {
+            padding: 0 20px; /* separa la imagen 20px a cada lado */
         }
 
-        /* Solo para el inicio */
+
         .inicio-section {
-            padding-top: 0; /* elimina el espacio extra solo en Inicio */
+            padding-top: 0;
         }
-    </style>
 
+        /* === TEMA CLARO CON VERDE OLIVO CLARO === */
+        body[data-theme="light"] {
+            background: #cdd8b7;
+            color: #2b2b2b;
+        }
+
+        body[data-theme="light"] * {
+            color: #2b2b2b !important;
+        }
+
+        body[data-theme="light"] .navbar {
+            background: rgba(255, 255, 255, 0.45);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+        }
+
+        body[data-theme="light"] .link {
+            color: #2b2b2b;
+        }
+
+        body[data-theme="light"] .link:hover {
+            color: #556b2f;
+        }
+
+        body[data-theme="light"] .link::before {
+            background-color: #556b2f;
+        }
+
+        body[data-theme="light"] .theme-icon {
+            color: #2b2b2b;
+        }
+
+        body[data-theme="light"] .cronograma-arrow,
+        body[data-theme="light"] .arrow {
+            background: rgba(0, 0, 0, 0.15);
+            color: #556b2f;
+        }
+
+        body[data-theme="light"] .cronograma-arrow:hover,
+        body[data-theme="light"] .arrow:hover {
+            background: rgba(0, 0, 0, 0.25);
+        }
+
+        body[data-theme="light"] .card {
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(0, 0, 0, 0.15);
+        }
+
+        body[data-theme="light"] .cronograma-card img {
+            background: #f3f3f3;
+        }
+        /* 🌙🔥 MODO OSCURO — SOLO COLOR ROJO VINO */
+        body[data-theme="dark"] {
+            background: #2b0f14; /* vino oscuro */
+            color: #f5eaea;      /* blanco rosado */
+        }
+
+        body[data-theme="dark"] * {
+            color: #f5eaea !important;
+        }
+
+        /* Navbar modo oscuro */
+        body[data-theme="dark"] .navbar {
+            background: rgba(80, 20, 30, 0.45);
+            border-bottom: 1px solid rgba(255, 200, 200, 0.25);
+        }
+
+        /* Links */
+        body[data-theme="dark"] .link {
+            color: #f5eaea;
+        }
+
+        body[data-theme="dark"] .link:hover {
+            color: #e86c7c;
+        }
+
+        body[data-theme="dark"] .link::before {
+            background-color: #e86c7c;
+        }
+
+        /* Flechas */
+        body[data-theme="dark"] .cronograma-arrow,
+        body[data-theme="dark"] .arrow {
+            background: rgba(255, 200, 200, 0.15);
+            color: #e86c7c;
+        }
+
+        body[data-theme="dark"] .cronograma-arrow:hover,
+        body[data-theme="dark"] .arrow:hover {
+            background: rgba(255, 200, 200, 0.25);
+        }
+
+        /* Tarjetas */
+        body[data-theme="dark"] .card,
+        body[data-theme="dark"] .cuadro-explicacion,
+        body[data-theme="dark"] .cuadro-instagram,
+        body[data-theme="dark"] .objetivo-card,
+        body[data-theme="dark"] .eva-card {
+            background: rgba(255, 200, 200, 0.12);
+            border: 1px solid rgba(255, 200, 200, 0.25);
+        }
+
+        /* Imágenes cronograma (igual tamaño, solo color de fondo) */
+        body[data-theme="dark"] .cronograma-card img {
+            background: rgba(80, 20, 30, 1);
+        }
+
+        /* ================================ */
+        /*     RECUADROS DEL INICIO        */
+        /* ================================ */
+
+        .inicio-cuadros {
+            width: 100%;
+            margin-top: 30px;
+            padding: 40px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .cuadro-explicacion,
+        .cuadro-instagram {
+            width: 85%;
+            max-width: 900px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px 30px;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .cuadro-instagram {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .cuadro-instagram img {
+            width: 85px;
+            height: 85px;
+            filter: drop-shadow(0 0 5px #ffd369);
+        }
+
+        .insta-texto {
+            text-align: left;
+            max-width: 70%;
+        }
+
+        /* Modo claro */
+        body[data-theme="light"] .cuadro-explicacion,
+        body[data-theme="light"] .cuadro-instagram {
+            background: rgba(255, 255, 255, 0.55);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+        /* =============================== */
+        /*   EVALUACIÓN Y REFLEXIONES     */
+        /* =============================== */
+
+        .evaluacion-grid {
+            width: 90%;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+        }
+
+        .eva-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            backdrop-filter: blur(8px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .eva-card img {
+            width: 100%;
+            height: auto;        /* La imagen se adapta */
+            object-fit: contain; /* Mantiene proporción */
+            border-radius: 12px;
+        }
+
+        /* Modo claro */
+        body[data-theme="light"] .eva-card {
+            background: rgba(255, 255, 255, 0.55);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+        /* =============================== */
+        /*           OBJETIVOS            */
+        /* =============================== */
+
+        .objetivo-card {
+            width: 85%;
+            max-width: 900px;
+            margin: 25px auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 25px 30px;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            text-align: left;
+            font-size: 1.15rem;
+            line-height: 1.6;
+        }
+
+        .objetivo-subtitulo {
+            margin-top: 40px;
+            font-size: 2rem;
+            opacity: 0.9;
+        }
+
+        /* Modo claro */
+        body[data-theme="light"] .objetivo-card {
+            background: rgba(255, 255, 255, 0.55);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+    </style>    
 </head>
 
 <body>
@@ -278,45 +500,81 @@
 <div class="theme-icon"></div>
 
 <nav class="navbar">
-    <div class="logo">MiProyecto</div>
+    <div class="logo">PAEC</div>
     <ul class="nav-links">
         <li><a class="link" onclick="showPage('inicio')">Inicio</a></li>
-        <li><a class="link" onclick="showPage('objetivos')">Objetivos</a></li>
+        <li><a class="link" onclick="showPage('objetivo')">Objetivos</a></li>
         <li><a class="link" onclick="showPage('cronograma')">Cronograma</a></li>
         <li><a class="link" onclick="showPage('galeria')">Galería</a></li>
         <li><a class="link" onclick="showPage('evaluacion')">Evaluación y Reflexiones</a></li>
     </ul>
 </nav>
+
 <section id="inicio" class="page inicio-section active">
 
     <!-- IMAGEN DE FONDO -->
     <div class="inicio-img-container">
-        <img src="template_paec.png" alt="Imagen de inicio">
+        <img src="{% static 'img/template_paec.png' %}" alt="Imagen de inicio">
     </div>
 
-    <!-- CONTENIDO SOBRE LA IMAGEN -->
-    <div class="inicio-content">
-        <div class="inicio-descripcion">
+    <!-- ⭐⭐ NUEVO: LOS 2 RECUADROS ⭐⭐ -->
+    <div class="inicio-cuadros">
+
+        <!-- 🟩 RECUADRO 1: Explicación del proyecto -->
+        <div class="cuadro-explicacion">
             <h2>¿De qué trata este proyecto?</h2>
             <p>
-                Aquí puedes escribir una descripción clara del proyecto, su propósito,
-                objetivos principales y lo que esperas lograr con él.
+                El proyecto PAEC tiene como propósito mejorar, restaurar y embellecer un área verde que actualmente se encuentra en malas condiciones debido a la falta de cuidado y la acumulación de basura. A través de esta iniciativa se busca recuperar físicamente el espacio, transformándolo en un lugar limpio, agradable y útil para la comunidad escolar y local.
+
+                Además, el proyecto pretende fomentar la conciencia ambiental, promoviendo hábitos de cuidado del medio ambiente y mostrando el impacto que nuestras acciones tienen sobre el planeta. Con estas acciones se busca generar un impacto positivo tanto en el entorno natural como en las personas que lo utilizan, creando un espacio donde se promueva el respeto, la responsabilidad y la participación activa de la comunidad para mantener el área en óptimas condiciones. 
             </p>
         </div>
 
-        <div class="inicio-logo">
-            <a href="https://instagram.com/TU_CUENTA" target="_blank">
-                <img src="img/logo.png" alt="Logo Instagram">
+        <!-- 🟦 RECUADRO 2: Instagram -->
+        <div class="cuadro-instagram">
+            <div class="insta-texto">
+                <h2>¡Preciona el boton para ingresar a nustra pagina de instagram!</h2>
+                <p>Aqui podras ver nuestro proceso semana con semana</p>
+            </div>
+
+            <a href="https://www.instagram.com/_fresita.eco.project_/" target="_blank" class="insta-logo">
+                <img src="{% static 'img/paec1.png' %}" alt="Instagram">
             </a>
         </div>
+
+    </div>
+    <!-- ⭐⭐ FIN DE LOS RECUADROS ⭐⭐ -->
+
+</section>
+
+<section id="objetivo" class="page">
+    <h1>Objetivos</h1>
+
+    <!-- 🟩 RECUADRO PRINCIPAL DE OBJETIVOS -->
+    <div class="objetivo-card">
+        <p>
+            Este proyecto busca recuperar la estructura y función de ecosistemas degradados, 
+            promoviendo la biodiversidad y los servicios ecosistémicos. Implica crear espacios 
+            resilientes y de bajo impacto ambiental, e involucra a los residentes locales en 
+            la planificación y ejecución del proyecto. Esto asegura que el parque responda a 
+            las necesidades de la comunidad, fomenta el sentido de pertenencia y facilita el 
+            mantenimiento a lo largo del tiempo.
+        </p>
+    </div>
+
+    <!-- 🟦 SUBTÍTULO -->
+    <h2 class="objetivo-subtitulo">Lugar</h2>
+
+    <!-- 🟦 RECUADRO DEL LUGAR -->
+    <div class="objetivo-card">
+        <p>
+            Calle Jaral Del Progreso #8 Fraccionamiento Guanajuato.
+            Parque de las nubes
+        </p>
     </div>
 
 </section>
 
-<section id="objetivos" class="page">
-    <h1>Objetivos</h1>
-    <p>Aquí puedes describir los objetivos del proyecto.</p>
-</section>
 
 <!-- CRONOGRAMA CON CARRUSEL SIN JS -->
 <section id="cronograma" class="page">
@@ -332,15 +590,14 @@
             <div class="cronograma-card" id="c1">
                 <h3>ROLES</h3>
                 <p>Rol empleado por cada integrante del equipo</p>
-                <img src="E1.png">
+                <img src="{% static 'img/E1.png' %}">
             </div>
 
-        <div class="cronograma-card" id="c2">
-    <h3>ACTIVIDADES</h3>
-    <p>En que tiempos se realizaron las actividades</p>
-    <img src="E2.png">
-</div>
-
+            <div class="cronograma-card" id="c2">
+                <h3>ACTIVIDADES</h3>
+                <p>En que tiempos se realizaron las actividades</p>
+                <img src="{% static 'img/E2.png' %}">
+            </div>
 
         </div>
 
@@ -357,12 +614,12 @@
         <div class="carousel-container">
             <a class="arrow left" href="#sem1-1">&#10094;</a>
             <div class="carousel">
-                <div class="card" id="sem1-1"><img src="S14.png" alt=""></div>
-                <div class="card" id="sem1-2"><img src="S15.png" alt=""></div>
-                <div class="card" id="sem1-3"><img src="S16.png" alt=""></div>
-                <div class="card" id="sem1-4"><img src="S1.png" alt=""></div>
-                <div class="card" id="sem1-5"><img src="S12.png" alt=""></div>
-                <div class="card" id="sem1-6"><img src="S13.png" alt=""></div>
+                <div class="card" id="sem1-1"><img src="{% static 'img/S14.png' %}" alt=""></div>
+                <div class="card" id="sem1-2"><img src="{% static 'img/S15.png' %}" alt=""></div>
+                <div class="card" id="sem1-3"><img src="{% static 'img/S16.png' %}" alt=""></div>
+                <div class="card" id="sem1-4"><img src="{% static 'img/S1.png' %}" alt=""></div>
+                <div class="card" id="sem1-5"><img src="{% static 'img/S12.png' %}" alt=""></div>
+                <div class="card" id="sem1-6"><img src="{% static 'img/S13.png' %}" alt=""></div>
             </div>
             <a class="arrow right" href="#sem1-6">&#10095;</a>
         </div>
@@ -374,12 +631,12 @@
         <div class="carousel-container">
             <a class="arrow left" href="#sem2-1">&#10094;</a>
             <div class="carousel">
-                <div class="card" id="sem2-1"><img src="S2.png" alt=""></div>
-                <div class="card" id="sem2-2"><img src="S22.png" alt=""></div>
-                <div class="card" id="sem2-3"><img src="S23.png" alt=""></div>
-                <div class="card" id="sem2-4"><img src="S24.png" alt=""></div>
-                <div class="card" id="sem2-5"><img src="S25.png" alt=""></div>
-                <div class="card" id="sem2-6"><img src="S26.png" alt=""></div>
+                <div class="card" id="sem2-1"><img src="{% static 'img/S2.png' %}" alt=""></div>
+                <div class="card" id="sem2-2"><img src="{% static 'img/S22.png' %}" alt=""></div>
+                <div class="card" id="sem2-3"><img src="{% static 'img/S23.png' %}" alt=""></div>
+                <div class="card" id="sem2-4"><img src="{% static 'img/S24.png' %}" alt=""></div>
+                <div class="card" id="sem2-5"><img src="{% static 'img/S25.png' %}" alt=""></div>
+                <div class="card" id="sem2-6"><img src="{% static 'img/S26.png' %}" alt=""></div>
             </div>
             <a class="arrow right" href="#sem2-6">&#10095;</a>
         </div>
@@ -391,12 +648,12 @@
         <div class="carousel-container">
             <a class="arrow left" href="#sem3-1">&#10094;</a>
             <div class="carousel">
-                <div class="card" id="sem3-1"><img src="" alt=""></div>
-                <div class="card" id="sem3-2"><img src="" alt=""></div>
-                <div class="card" id="sem3-3"><img src="" alt=""></div>
-                <div class="card" id="sem3-4"><img src="" alt=""></div>
-                <div class="card" id="sem3-5"><img src="" alt=""></div>
-                <div class="card" id="sem3-6"><img src="" alt=""></div>
+                <div class="card" id="sem3-1"><img src="{% static 'img/S3.png' %}" alt=""></div>
+                <div class="card" id="sem3-2"><img src="{% static 'img/S32.png' %}" alt=""></div>
+                <div class="card" id="sem3-3"><img src="{% static 'img/S33.png' %}" alt=""></div>
+                <div class="card" id="sem3-4"><img src="{% static 'img/S34.png' %}" alt=""></div>
+                <div class="card" id="sem3-5"><img src="{% static 'img/S35.png' %}" alt=""></div>
+                <div class="card" id="sem3-6"><img src="{% static 'img/S36.png' %}" alt=""></div>
             </div>
             <a class="arrow right" href="#sem3-6">&#10095;</a>
         </div>
@@ -408,12 +665,11 @@
         <div class="carousel-container">
             <a class="arrow left" href="#sem4-1">&#10094;</a>
             <div class="carousel">
-                <div class="card" id="sem4-1"><img src="S4(1).png" alt=""></div>
-                <div class="card" id="sem4-2"><img src="" alt=""></div>
-                <div class="card" id="sem4-3"><img src="" alt=""></div>
-                <div class="card" id="sem4-4"><img src="" alt=""></div>
-                <div class="card" id="sem4-5"><img src="" alt=""></div>
-                <div class="card" id="sem4-6"><img src="" alt=""></div>
+                <div class="card" id="sem4-1"><img src="{% static 'img/S4(1).png' %}" alt=""></div>
+                <div class="card" id="sem4-2"><img src="{% static 'img/S42.png' %}" alt=""></div>
+                <div class="card" id="sem4-3"><img src="{% static 'img/S43.png' %}" alt=""></div>
+                <div class="card" id="sem4-4"><img src="{% static 'img/S44.png' %}" alt=""></div>
+                <div class="card" id="sem4-5"><img src="{% static 'img/245.png' %}" alt=""></div>
             </div>
             <a class="arrow right" href="#sem4-6">&#10095;</a>
         </div>
@@ -424,7 +680,26 @@
 <section id="evaluacion" class="page">
     <h1>Evaluación y Reflexiones</h1>
     <p>Conclusiones, aprendizajes y evaluación del proyecto.</p>
+
+    <!-- 🟩 RECUADROS DE IMAGENES -->
+    <div class="evaluacion-grid">
+        <div class="eva-card">
+            <img src="{% static 'img/RM.png' %}" alt="MORITA">
+        </div>
+        <div class="eva-card">
+            <img src="{% static 'img/RU.png' %}" alt="Imagen 2">
+        </div>
+        <div class="eva-card">
+            <img src="{% static 'img/RC.png' %}" alt="Imagen 3">
+        </div>
+        <div class="eva-card">
+            <img src="{% static 'img/RCI.png' %}" alt="Imagen 4">
+        </div>
+        <div class="eva-card">
+            <img src="{% static 'img/RL.png' %}" alt="Imagen 5">
+        </div>
 </section>
+
 
 <script>
 function showPage(pageId) {
