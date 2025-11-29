@@ -126,5 +126,7 @@ STATIC_URL = '/static/'
 
 # 3. RUTA DE RECOLECCIÓN: Usa os.path.join para máxima compatibilidad
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles") # <--- SOLUCIÓN AL ERROR
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
