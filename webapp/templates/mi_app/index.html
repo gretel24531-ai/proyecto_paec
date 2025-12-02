@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Rosita Fresita</title>
-    <link rel="icon" type="image" href="{% static 'img/paec2.png' %}">
+    <link rel="icon" type="image" href="{% static 'webapp/img/paec2.png' %}">
 
     <style>
         body {
@@ -259,7 +259,7 @@
             object-position: center;
             display: block;
 
-            /* ⭐ NUEVO: BORDES SIN CAMBIAR TAMAÑO ⭐ */
+            /*BORDES */
             border-radius: 50px;           /* Bordes redondeados bonitos */
             border: 4px solid #ffffff55;   /* Borde suave translúcido */
         }
@@ -513,13 +513,13 @@
 
     <!-- IMAGEN DE FONDO -->
     <div class="inicio-img-container">
-        <img src="{% static 'img/template_paec.png' %}" alt="Imagen de inicio">
+        <img src="{% static 'webapp/img/template_paec.png' %}" alt="Imagen de inicio">
     </div>
 
-    <!-- ⭐⭐ NUEVO: LOS 2 RECUADROS ⭐⭐ -->
+    <!--  NUEVO: LOS 2 RECUADROS -->
     <div class="inicio-cuadros">
 
-        <!-- 🟩 RECUADRO 1: Explicación del proyecto -->
+        <!-- RECUADRO 1: Explicación del proyecto -->
         <div class="cuadro-explicacion">
             <h2>¿De qué trata este proyecto?</h2>
             <p>
@@ -529,7 +529,7 @@
             </p>
         </div>
 
-        <!-- 🟦 RECUADRO 2: Instagram -->
+        <!-- RECUADRO 2: Instagram -->
         <div class="cuadro-instagram">
             <div class="insta-texto">
                 <h2>¡Preciona el boton para ingresar a nustra pagina de instagram!</h2>
@@ -537,19 +537,20 @@
             </div>
 
             <a href="https://www.instagram.com/_fresita.eco.project_/" target="_blank" class="insta-logo">
-                <img src="{% static 'img/paec1.png' %}" alt="Instagram">
+    </div>
+                <img src="{% static 'webapp/img/paec1.png' %}" alt="Instagram">
             </a>
         </div>
 
     </div>
-    <!-- ⭐⭐ FIN DE LOS RECUADROS ⭐⭐ -->
+    <!--  FIN DE LOS RECUADROS  -->
 
 </section>
 
 <section id="objetivo" class="page">
     <h1>Objetivos</h1>
 
-    <!-- 🟩 RECUADRO PRINCIPAL DE OBJETIVOS -->
+    <!-- RECUADRO PRINCIPAL DE OBJETIVOS -->
     <div class="objetivo-card">
         <p>
             Este proyecto busca recuperar la estructura y función de ecosistemas degradados, 
@@ -561,10 +562,10 @@
         </p>
     </div>
 
-    <!-- 🟦 SUBTÍTULO -->
+    <!-- SUBTÍTULO -->
     <h2 class="objetivo-subtitulo">Lugar</h2>
 
-    <!-- 🟦 RECUADRO DEL LUGAR -->
+    <!-- RECUADRO DEL LUGAR -->
     <div class="objetivo-card">
         <p>
             Calle Jaral Del Progreso #8 Fraccionamiento Guanajuato.
@@ -575,7 +576,7 @@
 </section>
 
 
-<!-- CRONOGRAMA CON CARRUSEL SIN JS -->
+<!-- CRONOGRAMA-->
 <section id="cronograma" class="page">
     <h1>Cronograma</h1>
     <p>A continuación podras ver un poco de nuetras actividades, que hicimos de inicio a fin del proyecto:</p>
@@ -589,13 +590,13 @@
             <div class="cronograma-card" id="c1">
                 <h3>ROLES</h3>
                 <p>Rol empleado por cada integrante del equipo</p>
-                <img src="{% static 'img/E1.png' %}">
+                <img src="{% static 'webapp/img/E1.png' %}">
             </div>
 
             <div class="cronograma-card" id="c2">
                 <h3>ACTIVIDADES</h3>
                 <p>En que tiempos se realizaron las actividades</p>
-                <img src="{% static 'img/E2.png' %}">
+                <img src="{% static 'webapp/img/E2.png' %}">
             </div>
 
         </div>
@@ -613,12 +614,12 @@
         <div class="carousel-container">
             <a class="arrow left" href="#sem1-1">&#10094;</a>
             <div class="carousel">
-                <div class="card" id="sem1-1"><img src="{% static 'img/S14.png' %}" alt=""></div>
-                <div class="card" id="sem1-2"><img src="{% static 'img/S15.png' %}" alt=""></div>
-                <div class="card" id="sem1-3"><img src="{% static 'img/S16.png' %}" alt=""></div>
-                <div class="card" id="sem1-4"><img src="{% static 'img/S1.png' %}" alt=""></div>
-                <div class="card" id="sem1-5"><img src="{% static 'img/S12.png' %}" alt=""></div>
-                <div class="card" id="sem1-6"><img src="{% static 'img/S13.png' %}" alt=""></div>
+                <div class="card" id="sem1-1"><img src="{% static 'webapp/img/S14.png' %}" alt=""></div>
+                <div class="card" id="sem1-2"><img src="{% static 'webapp/img/S15.png' %}" alt=""></div>
+                <div class="card" id="sem1-3"><img src="{% static 'webapp/img/S16.png' %}" alt=""></div>
+                <div class="card" id="sem1-4"><img src="{% static 'webapp/img/S1.png' %}" alt=""></div>
+                <div class="card" id="sem1-5"><img src="{% static 'webapp/img/S12.png' %}" alt=""></div>
+                <div class="card" id="sem1-6"><img src="{% static 'webapp/img/S13.png' %}" alt=""></div>
             </div>
             <a class="arrow right" href="#sem1-6">&#10095;</a>
         </div>
@@ -630,12 +631,12 @@
         <div class="carousel-container">
             <a class="arrow left" href="#sem2-1">&#10094;</a>
             <div class="carousel">
-                <div class="card" id="sem2-1"><img src="{% static 'img/S2.png' %}" alt=""></div>
-                <div class="card" id="sem2-2"><img src="{% static 'img/S22.png' %}" alt=""></div>
-                <div class="card" id="sem2-3"><img src="{% static 'img/S23.png' %}" alt=""></div>
-                <div class="card" id="sem2-4"><img src="{% static 'img/S24.png' %}" alt=""></div>
-                <div class="card" id="sem2-5"><img src="{% static 'img/S25.png' %}" alt=""></div>
-                <div class="card" id="sem2-6"><img src="{% static 'img/S26.png' %}" alt=""></div>
+                <div class="card" id="sem2-1"><img src="{% static 'webapp/img/S2.png' %}" alt=""></div>
+                <div class="card" id="sem2-2"><img src="{% static 'webapp/img/S22.png' %}" alt=""></div>
+                <div class="card" id="sem2-3"><img src="{% static 'webapp/img/S23.png' %}" alt=""></div>
+                <div class="card" id="sem2-4"><img src="{% static 'webapp/img/S24.png' %}" alt=""></div>
+                <div class="card" id="sem2-5"><img src="{% static 'webapp/img/S25.png' %}" alt=""></div>
+                <div class="card" id="sem2-6"><img src="{% static 'webapp/img/S26.png' %}" alt=""></div>
             </div>
             <a class="arrow right" href="#sem2-6">&#10095;</a>
         </div>
@@ -647,12 +648,12 @@
         <div class="carousel-container">
             <a class="arrow left" href="#sem3-1">&#10094;</a>
             <div class="carousel">
-                <div class="card" id="sem3-1"><img src="{% static 'img/S3.png' %}" alt=""></div>
-                <div class="card" id="sem3-2"><img src="{% static 'img/S32.png' %}" alt=""></div>
-                <div class="card" id="sem3-3"><img src="{% static 'img/S33.png' %}" alt=""></div>
-                <div class="card" id="sem3-4"><img src="{% static 'img/S34.png' %}" alt=""></div>
-                <div class="card" id="sem3-5"><img src="{% static 'img/S35.png' %}" alt=""></div>
-                <div class="card" id="sem3-6"><img src="{% static 'img/S36.png' %}" alt=""></div>
+                <div class="card" id="sem3-1"><img src="{% static 'webapp/img/S3.png' %}" alt=""></div>
+                <div class="card" id="sem3-2"><img src="{% static 'webapp/img/S32.png' %}" alt=""></div>
+                <div class="card" id="sem3-3"><img src="{% static 'webapp/img/S33.png' %}" alt=""></div>
+                <div class="card" id="sem3-4"><img src="{% static 'webapp/img/S34.png' %}" alt=""></div>
+                <div class="card" id="sem3-5"><img src="{% static 'webapp/img/S35.png' %}" alt=""></div>
+                <div class="card" id="sem3-6"><img src="{% static 'webapp/img/S36.png' %}" alt=""></div>
             </div>
             <a class="arrow right" href="#sem3-6">&#10095;</a>
         </div>
@@ -664,11 +665,11 @@
         <div class="carousel-container">
             <a class="arrow left" href="#sem4-1">&#10094;</a>
             <div class="carousel">
-                <div class="card" id="sem4-1"><img src="{% static 'img/S4(1).png' %}" alt=""></div>
-                <div class="card" id="sem4-2"><img src="{% static 'img/S42.png' %}" alt=""></div>
-                <div class="card" id="sem4-3"><img src="{% static 'img/S43.png' %}" alt=""></div>
-                <div class="card" id="sem4-4"><img src="{% static 'img/S44.png' %}" alt=""></div>
-                <div class="card" id="sem4-5"><img src="{% static 'img/245.png' %}" alt=""></div>
+                <div class="card" id="sem4-1"><img src="{% static 'webapp/img/S4(1).png' %}" alt=""></div>
+                <div class="card" id="sem4-2"><img src="{% static 'webapp/img/S42.png' %}" alt=""></div>
+                <div class="card" id="sem4-3"><img src="{% static 'webapp/img/S43.png' %}" alt=""></div>
+                <div class="card" id="sem4-4"><img src="{% static 'webapp/img/S44.png' %}" alt=""></div>
+                <div class="card" id="sem4-5"><img src="{% static 'webapp/img/245.png' %}" alt=""></div>
             </div>
             <a class="arrow right" href="#sem4-6">&#10095;</a>
         </div>
@@ -680,22 +681,22 @@
     <h1>Evaluación y Reflexiones</h1>
     <p>Conclusiones, aprendizajes y evaluación del proyecto.</p>
 
-    <!-- 🟩 RECUADROS DE IMAGENES -->
+    <!-- RECUADROS DE IMAGENES -->
     <div class="evaluacion-grid">
         <div class="eva-card">
-            <img src="{% static 'img/RM.png' %}" alt="MORITA">
+            <img src="{% static 'webapp/img/RM.png' %}" alt="MORITA">
         </div>
         <div class="eva-card">
-            <img src="{% static 'img/RU.png' %}" alt="Imagen 2">
+            <img src="{% static 'webapp/img/RU.png' %}" alt="Imagen 2">
         </div>
         <div class="eva-card">
-            <img src="{% static 'img/RC.png' %}" alt="Imagen 3">
+            <img src="{% static 'webapp/img/RC.png' %}" alt="Imagen 3">
         </div>
         <div class="eva-card">
-            <img src="{% static 'img/RCI.png' %}" alt="Imagen 4">
+            <img src="{% static 'webapp/img/RCI.png' %}" alt="Imagen 4">
         </div>
         <div class="eva-card">
-            <img src="{% static 'img/RL.png' %}" alt="Imagen 5">
+            <img src="{% static 'webapp/img/RL.png' %}" alt="Imagen 5">
         </div>
 </section>
 
